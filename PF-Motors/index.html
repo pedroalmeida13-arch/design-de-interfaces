@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PF Motors | Seu próximo caminho</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header>
+            <div class="wrap nav">
+                <a href="#inicio" class="logo" aria-label="PF Motors início"
+                    ><span>PF/</span> PF MOTORS</a
+                >
+                <nav class="navlinks">
+                    <a href="#estoque">Nosso estoque</a
+                    ><a href="#como-funciona">Como funciona</a>
+                </nav>
+                <div class="nav-actions">
+                    <button class="btn outline" id="nav-fav">
+                        ♡ Favoritos <span id="fav-count">0</span></button
+                    ><button class="btn outline" id="login-button">Entrar</button>
+                    <button class="btn" id="account">Criar cadastro ↗</button>
+                    <button class="btn outline hidden" id="logout-button">Sair</button>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div id="home" class="wrap">
+                <section class="hero">
+                    <div class="herocopy">
+                        <div class="eyebrow">Uma coleção fora do comum</div>
+                        <h1>
+                            Performance.<br />Presença.<br /><em
+                                >Personalidade.</em
+                            >
+                        </h1>
+                        <p>
+                            Esportivos e carros de luxo, selecionados para quem
+                            sente cada detalhe ao volante.
+                        </p>
+                        <a class="btn" href="#estoque"
+                            >Explorar veículos <span>↗</span></a
+                        >
+                    </div>
+                    <div class="heroimg">
+                        <img
+                            src="imagens/foto-01.jpg"
+                            alt="Porsche 911 Carrera GTS azul"
+                        /><span class="phototag">911 Carrera GTS · 480 cv</span>
+                    </div>
+                </section>
+                <div class="benefits">
+                    <span><b>01 /</b> Escolha seu veículo</span
+                    ><span><b>02 /</b> Faça seu cadastro</span
+                    ><span><b>03 /</b> Finalize seu pedido</span>
+                </div>
+                <section id="estoque">
+                    <div class="sectionhead">
+                        <div>
+                            <span class="smallcaps"
+                                >ENCONTRE SEU PRÓXIMO DESTINO</span
+                            >
+                            <h2>Uma garagem de possibilidades.</h2>
+                        </div>
+                        <span class="muted" id="count"></span>
+                    </div>
+                    <div class="filters">
+                        <input
+                            class="search"
+                            id="search"
+                            type="search"
+                            placeholder="Buscar por marca ou modelo..."
+                            aria-label="Buscar veículo"
+                        /><select id="category" aria-label="Categoria">
+                            <option value="">Todas as categorias</option>
+                            <option>Esportivo</option>
+                            <option>Superesportivo</option>
+                            <option>SUV de luxo</option>
+                            <option>Gran turismo</option>
+                            <option>Conversível</option>
+                            <option>Perua esportiva</option></select
+                        ><select id="brand" aria-label="Marca">
+                            <option value="">Todas as marcas</option></select
+                        ><select id="budget" aria-label="Preço máximo">
+                            <option value="">Qualquer preço</option>
+                            <option value="1000000">Até R$ 1 milhão</option>
+                            <option value="2000000">Até R$ 2 milhões</option>
+                            <option value="3000000">
+                                Até R$ 3 milhões
+                            </option></select
+                        ><select id="sort" aria-label="Ordenação">
+                            <option value="featured">Destaques</option>
+                            <option value="asc">Menor preço</option>
+                            <option value="desc">Maior preço</option>
+                        </select>
+                    </div>
+                    <div class="toolbar">
+                        <button
+                            class="btn outline"
+                            id="fav-filter"
+                            aria-pressed="false"
+                        >
+                            ♡ Apenas favoritos</button
+                        ><button class="btn outline" id="clear-filters">
+                            Limpar filtros</button
+                        ><span class="muted"
+                            >Selecione até 3 veículos para comparar.</span
+                        >
+                    </div>
+                    <div class="grid" id="cars"></div>
+                    <div class="comparebar hidden" id="comparebar">
+                        <span id="compare-count"></span
+                        ><button class="btn" id="compare-open">
+                            Comparar →</button
+                        ><button
+                            class="btn outline"
+                            id="compare-clear"
+                            style="color: white; border-color: #8ea798"
+                        >
+                            Limpar
+                        </button>
+                    </div>
+                </section>
+                <section class="info" id="como-funciona">
+                    <div>
+                        <span class="smallcaps"
+                            >SEU PRÓXIMO CAPÍTULO COMEÇA AQUI</span
+                        >
+                        <h3 style="margin-top: 10px">
+                            Mais que um carro. O começo de novas histórias.
+                        </h3>
+                        <p class="muted">
+                            Do ronco de um V10 ao conforto de um gran turismo.
+                            Explore versões, compare detalhes e encontre o carro
+                            que combina com a sua próxima história.
+                        </p>
+                    </div>
+                    <span class="num">→</span>
+                </section>
+            </div>
+            <section
+                id="register"
+                class="wrap screen hidden"
+                aria-labelledby="register-title"
+            >
+                <button class="back" data-back>← Voltar ao estoque</button>
+                <div class="steps">
+                    <strong>01 Cadastro</strong> &nbsp; / &nbsp; 02 Checkout
+                    &nbsp; / &nbsp; 03 Confirmação
+                </div>
+                <h2 id="register-title">Crie sua conta PF Motors.</h2>
+                <p class="muted">
+                    Preencha seus dados para organizar seus veículos favoritos e acompanhar suas escolhas.
+                </p>
+                <div class="formlayout">
+                    <form id="register-form" class="panel">
+                        <div class="fields">
+                            <div class="field full">
+                                <label for="name">Nome completo</label
+                                ><input
+                                    id="name"
+                                    autocomplete="name"
+                                    required
+                                    minlength="3"
+                                    placeholder="Ex.: Pedro Silva"
+                                />
+                            </div>
+                            <div class="field full">
+                                <label for="email">E-mail</label
+                                ><input
+                                    id="email"
+                                    type="email"
+                                    autocomplete="email"
+                                    required
+                                    placeholder="pedro@exemplo.com"
+                                />
+                            </div>
+                            <div class="field full">
+                                <label for="phone">Telefone</label
+                                ><input
+                                    id="phone"
+                                    type="tel"
+                                    autocomplete="tel"
+                                    required
+                                    minlength="10"
+                                    maxlength="20"
+                                    placeholder="(17) 99999-9999"
+                                />
+                            </div>
+                            <div class="field">
+                                <label for="password">Senha</label
+                                ><input
+                                    id="password"
+                                    type="password"
+                                    minlength="8"
+                                    required
+                                    autocomplete="new-password"
+                                    placeholder="Mínimo de 8 caracteres"
+                                />
+                            </div>
+                            <div class="field">
+                                <label for="confirm">Confirme a senha</label
+                                ><input
+                                    id="confirm"
+                                    type="password"
+                                    minlength="8"
+                                    required
+                                    autocomplete="new-password"
+                                    placeholder="Repita a senha"
+                                />
+                            </div>
+                        </div>
+                        <label class="check"><input id="lgpd-accept" type="checkbox" required />
+                            Li e concordo com os <button type="button" class="inline-link" data-privacy>Termos de Uso e Aviso de Privacidade</button>.
+                        </label>
+                        <label class="check"><input id="marketing-accept" type="checkbox" />
+                            Quero receber novidades e ofertas (opcional).
+                        </label>
+                        <button class="btn wide" type="submit">Criar minha conta →</button>
+                        <p class="muted center">Já tem uma conta? <button type="button" class="inline-link" data-login>Entrar</button></p>
+                    </form>
+                    <aside class="panel summary" id="register-summary"></aside>
+                </div>
+            </section>
+            <section id="login" class="wrap screen hidden" aria-labelledby="login-title">
+                <button class="back" data-back>← Voltar ao estoque</button>
+                <div class="formlayout account-layout">
+                    <form id="login-form" class="panel">
+                        <span class="smallcaps">BEM-VINDO DE VOLTA</span>
+                        <h2 id="login-title">Acesse sua conta.</h2>
+                        <p class="muted">Entre com o e-mail e a senha cadastrados neste navegador.</p>
+                        <div class="fields">
+                            <div class="field full"><label for="login-email">E-mail</label><input type="email" id="login-email" autocomplete="email" required placeholder="seu@email.com" /></div>
+                            <div class="field full"><label for="login-password">Senha</label><input type="password" id="login-password" autocomplete="current-password" required /></div>
+                        </div>
+                        <p id="login-error" class="form-error hidden" role="alert"></p>
+                        <button type="submit" class="btn wide">Entrar na conta →</button>
+                        <p class="muted center">Ainda não tem cadastro? <button type="button" class="inline-link" data-register>Cadastre-se</button></p>
+                    </form>
+                    <aside class="panel account-promo">
+                        <span class="smallcaps">SUA GARAGEM DIGITAL</span>
+                        <h2>Seu próximo carro começa aqui.</h2>
+                        <p class="muted">Explore nossos veículos, salve seus favoritos e compare os modelos que mais combinam com você.</p>
+                    </aside>
+                </div>
+            </section>
+            <section
+                id="checkout"
+                class="wrap screen hidden"
+                aria-labelledby="checkout-title"
+            >
+                <button class="back" data-back>← Trocar veículo</button>
+                <div class="steps">
+                    ✓ Cadastro &nbsp; / &nbsp;
+                    <strong>02 Checkout</strong> &nbsp; / &nbsp; 03 Confirmação
+                </div>
+                <h2 id="checkout-title">Falta pouco para concluir.</h2>
+                <p class="muted">Confira os detalhes da sua solicitação antes de continuar.</p>
+                <div class="formlayout">
+                    <form class="panel" id="checkout-form">
+                        <h3>Seus dados</h3>
+                        <p class="muted" id="customer"></p>
+                        <button type="button" class="back" id="edit">
+                            Editar cadastro
+                        </button>
+                        <div class="fields">
+                            <div class="field full">
+                                <label for="delivery"
+                                    >Como deseja receber?</label
+                                ><select id="delivery">
+                                    <option value="store">
+                                        Retirar na loja — grátis
+                                    </option>
+                                    <option value="home">
+                                        Entrega em endereço — R$ 800,00
+                                    </option>
+                                </select>
+                            </div>
+                            <div id="address-box" class="field full hidden">
+                                <div class="address-heading"><h3>Endereço de entrega</h3><span class="muted">Preenchimento automático via CEP</span></div>
+                                <div class="address-grid">
+                                    <div class="field"><label for="cep">CEP</label><input id="cep" inputmode="numeric" autocomplete="postal-code" maxlength="9" placeholder="00000-000" /><span id="cep-status" class="muted" aria-live="polite"></span></div>
+                                    <div class="field"><label for="street">Rua / Avenida</label><input id="street" autocomplete="address-line1" placeholder="Logradouro" /></div>
+                                    <div class="field"><label for="number">Número</label><input id="number" inputmode="numeric" placeholder="Número" /></div>
+                                    <div class="field"><label for="complement">Complemento</label><input id="complement" autocomplete="address-line2" placeholder="Apto., bloco, referência" /></div>
+                                    <div class="field"><label for="neighborhood">Bairro</label><input id="neighborhood" placeholder="Bairro" /></div>
+                                    <div class="field"><label for="city">Cidade</label><input id="city" autocomplete="address-level2" placeholder="Cidade" /></div>
+                                    <div class="field"><label for="state">Estado (UF)</label><input id="state" maxlength="2" autocomplete="address-level1" placeholder="SP" /></div>
+                                </div>
+                            </div>
+                            <div class="field full">
+                                <label for="payment"
+                                    >Forma de pagamento preferida</label
+                                ><select id="payment">
+                                    <option>Pix à vista</option>
+                                    <option>
+                                        Transferência bancária à vista
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="notice">Esta etapa registra uma intenção de compra no protótipo acadêmico. Não há cobrança, reserva real ou processamento de pagamento.</div>
+                        <label class="check"
+                            ><input type="checkbox" required />Conferi o veículo
+                            e o valor total da solicitação.</label
+                        ><button class="btn wide" type="submit">
+                            Confirmar solicitação →
+                        </button>
+                    </form>
+                    <aside class="panel summary" id="checkout-summary"></aside>
+                </div>
+            </section>
+            <section id="success" class="wrap screen hidden">
+                <div class="panel success">
+                    <div class="successicon">✓</div>
+                    <span class="smallcaps">PRÓXIMO PASSO, NOVOS CAMINHOS</span>
+                    <h2>Solicitação registrada!</h2>
+                    <p class="muted" id="success-text"></p>
+                    <div class="notice" id="receipt"></div>
+                    <p class="muted">
+                        Este é um protótipo acadêmico. Nenhuma compra, reserva real ou cobrança foi realizada.
+                    </p>
+                    <button class="btn" data-back>Voltar ao estoque ↗</button>
+                </div>
+            </section>
+            <dialog id="detail-dialog" aria-labelledby="detail-title">
+                <div class="dialoghead">
+                    <h2 id="detail-title">Detalhes do veículo</h2>
+                    <button
+                        class="close-dialog"
+                        data-close
+                        aria-label="Fechar detalhes"
+                    >
+                        ×
+                    </button>
+                </div>
+                <div class="dialogbody" id="detail-body"></div>
+            </dialog>
+            <dialog id="compare-dialog" aria-labelledby="compare-title">
+                <div class="dialoghead">
+                    <h2 id="compare-title">Compare sua seleção</h2>
+                    <button
+                        class="close-dialog"
+                        data-close
+                        aria-label="Fechar comparação"
+                    >
+                        ×
+                    </button>
+                </div>
+                <div class="dialogbody tablewrap" id="compare-body"></div>
+            </dialog>
+            <dialog id="privacy-dialog" aria-labelledby="privacy-title">
+                <div class="dialoghead"><h2 id="privacy-title">Termos de Uso e Aviso de Privacidade</h2><button class="close-dialog" data-close aria-label="Fechar termos">×</button></div>
+                <div class="dialogbody legal-copy">
+                    <p><strong>1. Natureza do projeto.</strong> PF Motors é um protótipo acadêmico de loja de veículos. Os anúncios, preços, contas e pedidos têm finalidade exclusivamente demonstrativa. Não há venda real por este site.</p>
+                    <p><strong>2. Dados utilizados.</strong> O formulário solicita nome, e-mail, telefone e senha para demonstrar cadastro e login. O endereço é solicitado apenas quando a opção de entrega é selecionada. Não informe dados pessoais reais ou senhas utilizadas em outros serviços.</p>
+                    <p><strong>3. Finalidades.</strong> Os dados servem para autenticar a conta de demonstração no próprio navegador, preencher a solicitação simulada e registrar suas preferências. A opção de receber ofertas é facultativa e não dispara mensagens.</p>
+                    <p><strong>4. Armazenamento e segurança.</strong> Informações básicas da conta e um verificador criptográfico de senha são armazenados localmente neste navegador. Não existe servidor de autenticação ou banco de dados remoto. A limpeza dos dados do navegador remove a conta; o projeto não é adequado a uso comercial sem infraestrutura adicional.</p>
+                    <p><strong>5. Consulta de CEP.</strong> Ao digitar um CEP, apenas os oito dígitos informados são enviados ao serviço público ViaCEP para preencher logradouro, bairro, cidade e estado. Consulte também a política do serviço externo.</p>
+                    <p><strong>6. Direitos e consentimento.</strong> O aceite dos termos é necessário para o cadastro demonstrativo. A preferência por novidades é opcional. Você pode excluir os dados de sua conta local pelo botão “Excluir minha conta” dentro da área de conta.</p>
+                    <p><strong>7. Limites.</strong> Este aviso descreve apenas o funcionamento deste protótipo; não representa, por si só, conformidade integral com a LGPD para uma operação comercial.</p>
+                    <button type="button" class="btn" data-close>Entendi</button>
+                </div>
+            </dialog>
+            <div
+                id="toast"
+                class="toast hidden"
+                role="status"
+                aria-live="polite"
+            ></div>
+        </main>
+        <footer>
+            <div class="wrap foot">
+                <span>© 2026 PF Motors. Protótipo acadêmico.</span
+                ><span
+                    >Anúncios fictícios. Fotos de referência; acabamento e
+                    opcionais podem variar.</span
+                >
+            </div>
+            <div class="wrap footer-privacy"><button type="button" class="inline-link" data-privacy>Termos de Uso e Privacidade</button><button type="button" id="delete-account" class="inline-link hidden">Excluir minha conta local</button></div>
+            <details
+                class="wrap"
+                style="margin-top: 20px; font-size: 11px; line-height: 1.8"
+            >
+                <summary style="cursor: pointer">
+                    Créditos das fotografias
+                </summary>
+                <p>
+                    Fotografias de referência redimensionadas e convertidas para
+                    JPEG. O enquadramento se adapta aos cartões.
+                </p>
+                <p>
+                    Porsche 911 Carrera GTS — Calreyn88 ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://commons.wikimedia.org/wiki/File:2022_Porsche_911_992_Carrera_GTS.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Foto original</a
+                    >
+                    ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://creativecommons.org/licenses/by-sa/4.0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Licença Creative Commons</a
+                    >
+                </p>
+                <p>
+                    BMW M4 Competition Coupé — Alexandre Prevot ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://commons.wikimedia.org/wiki/File:BMW_M4_Competition_Coup%C3%A9_G82_front_view.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Foto original</a
+                    >
+                    ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://creativecommons.org/licenses/by-sa/2.0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Licença Creative Commons</a
+                    >
+                </p>
+                <p>
+                    Mercedes-AMG GT S Coupé — Tokumeigakarinoaoshima ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://commons.wikimedia.org/wiki/File:Mercedes-AMG_GT_S_%28C190%29_front.JPG"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Foto original</a
+                    >
+                    ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://creativecommons.org/licenses/by-sa/4.0/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Licença Creative Commons</a
+                    >
+                </p>
+                <p>
+                    Audi R8 V10 Performance — Kevauto ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://commons.wikimedia.org/wiki/File:2019_Audi_R8_V10_performance_quattro_front_NYIAS_2019.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Foto original</a
+                    >
+                    ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://creativecommons.org/licenses/by-sa/4.0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Licença Creative Commons</a
+                    >
+                </p>
+                <p>
+                    Land Rover Range Rover Autobiography — Авто Плюс Новости ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://commons.wikimedia.org/wiki/File:2022_Land_Rover_Range_Rover_front.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Foto original</a
+                    >
+                    ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://creativecommons.org/licenses/by/3.0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Licença Creative Commons</a
+                    >
+                </p>
+                <p>
+                    Ferrari 488 GTB — Vauxford ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://commons.wikimedia.org/wiki/File:2017_Ferrari_488_GTB_Automatic_3.9_Front.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Foto original</a
+                    >
+                    ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://creativecommons.org/licenses/by-sa/4.0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Licença Creative Commons</a
+                    >
+                </p>
+                <p>
+                    Lamborghini Huracán EVO — Vauxford ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://commons.wikimedia.org/wiki/File:2019_Lamborghini_Huracan_EVO_LP_640-4_S-A_5.2_Front.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Foto original</a
+                    >
+                    ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://creativecommons.org/licenses/by-sa/4.0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Licença Creative Commons</a
+                    >
+                </p>
+                <p>
+                    McLaren 720S Spider — LuvsMG481 ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://commons.wikimedia.org/wiki/File:2020_McLaren_720S_front.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Foto original</a
+                    >
+                    ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://creativecommons.org/licenses/by-sa/4.0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Licença Creative Commons</a
+                    >
+                </p>
+                <p>
+                    Bentley Continental GT V8 — Vauxford ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://commons.wikimedia.org/wiki/File:2019_Bentley_Continental_GT_V8_Automatic_4.0_Front.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Foto original</a
+                    >
+                    ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://creativecommons.org/licenses/by-sa/4.0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Licença Creative Commons</a
+                    >
+                </p>
+                <p>
+                    Audi RS 6 Avant — Mr.choppers ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://commons.wikimedia.org/wiki/File:2021_Audi_RS6_Avant_in_Nardo_Gray%2C_front_right.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Foto original</a
+                    >
+                    ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://creativecommons.org/licenses/by-sa/3.0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Licença Creative Commons</a
+                    >
+                </p>
+                <p>
+                    Porsche Cayenne Turbo GT — Calreyn88 ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://commons.wikimedia.org/wiki/File:2022_Porsche_Cayenne_Turbo_GT.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Foto original</a
+                    >
+                    ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://creativecommons.org/licenses/by-sa/4.0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Licença Creative Commons</a
+                    >
+                </p>
+                <p>
+                    Aston Martin DB11 V8 Coupé — Vauxford ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://commons.wikimedia.org/wiki/File:2018_Aston_Martin_DB11_V8_Automatic_4.0_Front.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Foto original</a
+                    >
+                    ·
+                    <a
+                        style="text-decoration: underline"
+                        href="https://creativecommons.org/licenses/by-sa/4.0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Licença Creative Commons</a
+                    >
+                </p>
+            </details>
+        </footer>
+        <script src="cars.js" defer></script>
+        <script src="script.js" defer></script>
+    </body>
+</html>
